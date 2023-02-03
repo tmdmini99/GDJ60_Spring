@@ -21,7 +21,7 @@ public class ProductService {
 	
 
 	//결합도가 낮다(약하다)
-	public void setProductDAO( ProductDAO productDAO) {
+	public void setProductDAO(ProductDAO productDAO) {
 		this.productDAO =productDAO;
 		
 	}
@@ -45,7 +45,7 @@ public class ProductService {
 		
 		int result = productDAO.setAddProduct(productDTO);
 		
-		if(result >0) {
+		if(ar !=null){
 		for(ProductOptionDTO productOptionDTO : ar) {
 			productOptionDTO.setProductNum(productNum);
 			result = productDAO.setAddProdcutOption(productOptionDTO);
@@ -66,47 +66,6 @@ public class ProductService {
 	
 	
 	
-	public static void main(String[] args) {
-		
-		ProductDAO productDAO = new ProductDAO();
-		
-		ProductDTO productDTO = new ProductDTO();
-		productDTO.setProductName("product1");
-		productDTO.setProductDetail("detail1");
-		
-		
-		ProductOptionDTO productOptionDTO = new ProductOptionDTO();
-		
-		
-		
-		
-		
-		
-		try {
-			
-			Long num = productDAO.getProductNum();
-			
-			productDTO.setProductNum(num);
-			
-			int result = productDAO.setAddProduct(productDTO);
-			
-			productOptionDTO.setOptionNum(1L);
-			productOptionDTO.setProductNum(num);
-			
-			productOptionDTO.setOptionPrice(5L);
-			
-			if(result>0) {
-				productDAO.setAddProdcutOption(productOptionDTO);
-				
-			}
-			
-			
-			
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-
-	}
+	
 
 }
