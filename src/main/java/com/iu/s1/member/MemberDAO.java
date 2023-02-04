@@ -1,8 +1,12 @@
 package com.iu.s1.member;
 
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Scanner;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,15 +15,13 @@ import com.iu.s1.util.DBConnection;
 @Repository
 public class MemberDAO {
 	//setAddMember
-	private Scanner sc;
 	
-	public MemberDAO() {
-		this.sc = new Scanner(System.in);
-	}
+	
+	
 	
 	
 	public int setAddMember(MemberDTO memberDTO) throws Exception{
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getConnection1();
 		
 		String sql ="INSERT INTO MEMBER(ID, Pw, NAME, ADDRESS, PHONE, EMAIL) VALUES(?,?,?,?,?,?)";
 		
@@ -39,27 +41,31 @@ public class MemberDAO {
 		
 		return result;
 	}
-	
-	public static void main(String[] args) {
-		try {
-			MemberDAO dao = new MemberDAO();
-			
-			MemberDTO dto = new MemberDTO();
-			
-			dto.setId("id1");
-			dto.setPw("pw1");
-			dto.setName("name1");
-			dto.setAddress("address1");
-			dto.setPhone("phone1");
-			dto.setEmail("Email1");
-			
-			int a = dao.setAddMember(dto);
-			
-			System.out.println(a ==1);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public List<MemberDTO> getMemberList() throws Exception{
+		
+		List<MemberDTO> ar = new ArrayList<MemberDTO>();
+		Connection con = DBConnection.getConnection1();
+		String sql = "SELECT * FROM MEMBER";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			MemberDTO memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("ID"));
+			memberDTO.setPw(rs.getString("PW"));
+			memberDTO.setName(rs.getString("NAME"));
+			memberDTO.setAddress(rs.getString("ADDRESS"));
+			memberDTO.setPhone(rs.getString("PHONE"));
+			memberDTO.setEmail(rs.getString("EMAIL"));
+			ar.add(memberDTO);
 		}
+		
+		return ar;
+		
 	}
+	
+	
 	
 	
 }

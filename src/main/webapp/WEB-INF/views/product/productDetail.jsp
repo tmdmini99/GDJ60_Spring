@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>Product Detail Page</h1>
+	
+	<h2>${detail.productNum}</h2>
+	<h2>${detail.productName}</h2>
+	<h2>${detail.productDetail}</h2>
+	<h2>${detail.productJumsu}</h2>
+	
+	
 </body>
 </html>

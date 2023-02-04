@@ -18,6 +18,13 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	
+	
+	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
+		
+		return productDAO.getProductDetail(productDTO);
+	}
+	
 	public List<ProductDTO> getProductList() throws Exception{
 		
 		return productDAO.getProductList();
@@ -27,6 +34,7 @@ public class ProductService {
 	public int setAddProduct(ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception{
 		
 		Long num = productDAO.getProductNum();
+		productDTO.setProductNum(num);
 		
 		int result = productDAO.setAddProduct(productDTO);;
 		 

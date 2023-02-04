@@ -82,6 +82,8 @@ public class ProductDAO {
 	public List<ProductOptionDTO> getProductOptionList()throws Exception{
 		List<ProductOptionDTO> ar = new ArrayList<ProductOptionDTO>();
 		
+		
+		
 		Connection con = DBConnection.getConnection1();
 		String sql="SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL";
 		PreparedStatement st = con.prepareStatement(sql);
