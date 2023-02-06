@@ -23,7 +23,7 @@ public class MemberDAO {
 	public int setAddMember(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnection.getConnection1();
 		
-		String sql ="INSERT INTO MEMBER(ID, Pw, NAME, ADDRESS, PHONE, EMAIL) VALUES(?,?,?,?,?,?)";
+		String sql ="INSERT INTO MEMBER(ID, PW, NAME, ADDRESS, PHONE, EMAIL) VALUES(?,?,?,?,?,?)";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -61,6 +61,7 @@ public class MemberDAO {
 			ar.add(memberDTO);
 		}
 		
+		DBConnection.disConnection(rs, st, con);
 		return ar;
 		
 	}

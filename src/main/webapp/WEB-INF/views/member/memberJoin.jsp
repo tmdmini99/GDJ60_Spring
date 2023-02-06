@@ -20,7 +20,7 @@
  </select> -
  <input type="text" name="phone" >-<input type="text" name="phone" >
  <br>
- EMAIL : <input type="text" name="email">@
+ EMAIL : <input type="text" name="email"> 
  <select name="email">
  	<option>naver.com</option>
  	<option>gmail.com</option>

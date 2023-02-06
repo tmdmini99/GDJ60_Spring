@@ -15,6 +15,16 @@ public class ProductDAO {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
 		
 		
@@ -38,6 +48,7 @@ public class ProductDAO {
 		}else {
 			productDTO = null;
 		}
+		DBConnection.disConnection(rs, st, con);
 		return productDTO;
 		
 	}
@@ -100,7 +111,9 @@ public class ProductDAO {
 			
 			ar.add(dto);
 			
+			
 		}
+		DBConnection.disConnection(rs, st, con);
 		return ar;
 	}
 	
@@ -169,6 +182,7 @@ public class ProductDAO {
 		
 		
 		int result = st.executeUpdate();
+		DBConnection.disConnection(st, con);
 		return result;
 	}
 	
