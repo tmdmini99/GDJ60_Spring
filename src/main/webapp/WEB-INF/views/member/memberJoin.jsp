@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>Memeber Join Page</h1>
+ <h1>Member Join Page</h1>
  <form action="./memberJoin" method="post"> <br>
  ID : <input type="text" name="id"><br>
  PASSWORD : <input type="password" name="pw"><br>
