@@ -1,8 +1,12 @@
 package com.iu.s1.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,28 +18,25 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="memberJoin")
-	public String getMemberJoin() {
-		MemberDTO memberDTO = new MemberDTO();
+	@RequestMapping(value="memberJoin" ,method=RequestMethod.GET)
+	public void getMemberJoin() throws Exception{
 		
-		memberDTO.setId("tmd");
-		memberDTO.setPw("1234");
-		memberDTO.setName("승민");
-		memberDTO.setAddress("주소");
-		memberDTO.setPhone("0011");
-		memberDTO.setEmail("email@gmail.com");
-		
-		try {
-			int a = memberService.memberJoin(memberDTO);
-			System.out.println(a>0);
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		System.out.println("Member Join");
-		return "member/memberJoin";
 	}
+	@RequestMapping(value="memberJoin" ,method=RequestMethod.POST)
+	public String getMemberJoin(MemberDTO memberDTO) throws Exception{
+		int a= memberService.memberJoin(memberDTO);
+		System.out.println(a == 1);
+		return "redirect:./list";
+	}
+	@RequestMapping(value="list")
+	public String getMemberList(Model model) throws Exception{
+		List<MemberDTO> ar = memberService.getMemberList();
+		model.addAttribute("list", ar);
+		return "member/memberList";
+		
+	}
+	
+	
 	
 	@RequestMapping(value="memberLogin")
 	public void getMemberLogin() {

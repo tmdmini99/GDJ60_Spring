@@ -33,7 +33,8 @@ public class ProductDAO {
 		
 		
 		//selectOne 메서드는 결과물이 한개 나올때 사용
-		return sqlSession.selectOne(NAMESPACE+"getProductDeatail", productDTO);
+		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
+		// NAMESPACE 뒤에 +된 getProductDetail
 		
 	}
 	
