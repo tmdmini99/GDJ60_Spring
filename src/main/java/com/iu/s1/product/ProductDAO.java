@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.util.DBConnection;
@@ -13,32 +17,23 @@ import com.iu.s1.util.DBConnection;
 @Repository
 public class ProductDAO {
 	
+	@Autowired
+	private SqlSession sqlSession; //Mapper 위치
+	private final String NAMESPACE="com.iu.s1.product.ProductDAO.";
+	// 어떤 mapper를 쓸껀지 정하는건 NAMESPACE
+	//매개변수는 DTO로 받는게 BEST 수업때문에 Long으로 받음
+		public int setProductDelete(Long productNum) throws Exception {
+			//매개변수의 명을 Mapper에 그대로 적어야함
+			return sqlSession.delete(NAMESPACE+"setProductDelete", productNum);
+		}
+	
 	
 	
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
 		
 		
-		Connection con = DBConnection.getConnection1();
-		String sql ="SELECT * FROM PRODUCT WHERE PRODUCTNUM = ?";
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setLong(1,productDTO.getProductNum() );
-		
-		ResultSet rs = st.executeQuery();
-		
-		
-		if(rs.next()) {
-			productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
-			
-			
-		}else {
-			productDTO = null;
-		}
-		return productDTO;
+		//selectOne 메서드는 결과물이 한개 나올때 사용
+		return sqlSession.selectOne(NAMESPACE+"getProductDeatail", productDTO);
 		
 	}
 	
@@ -127,47 +122,15 @@ public class ProductDAO {
 	
 	
 	// Product 메서드
-	public List<ProductDTO> getProductList()throws Exception{
-		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
-		
-		Connection con = DBConnection.getConnection1();
-		
-		String sql = "SELECT PRODUCTNUM,PRODUCTNAME,PRODUCTJUMSU "
-				+ "FROM PRODUCT ORDER BY PRODUCTJUMSU DESC";
 	
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		ResultSet rs = st.executeQuery();
-		
-		while(rs.next()) {
-			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
-			
-			ar.add(productDTO);
-		}
-		DBConnection.disConnection(rs, st, con);
-		
-		return ar;
+	public List<ProductDTO> getProductList()throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getProductList");
 	}
 	
 	
 	public int setAddProduct(ProductDTO productDTO) throws Exception{
-		Connection con = DBConnection.getConnection1();
-		
-		String sql = "INSERT INTO PRODUCT(PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTJUMSU) VALUES(?,?,?,0.0)";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		
-		st.setLong(1, productDTO.getProductNum());
-		st.setString(2, productDTO.getProductName());
-		st.setString(3, productDTO.getProductDetail());
-		
-		
-		int result = st.executeUpdate();
-		return result;
+		return sqlSession.insert(NAMESPACE+"setAddProduct",productDTO);
+	
 	}
 	
 	public static void main(String[] args) {
