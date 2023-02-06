@@ -34,7 +34,7 @@ public class ProductDAO {
 		
 		//selectOne 메서드는 결과물이 한개 나올때 사용
 		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
-		// NAMESPACE 뒤에 +된 getProductDetail
+		// NAMESPACE 뒤에 +된 getProductDetail은 Mapper의 <select id = 에서의 id값과 동일>
 		
 	}
 	
