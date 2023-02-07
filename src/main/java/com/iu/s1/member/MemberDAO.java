@@ -14,7 +14,7 @@ public class MemberDAO {
 	
 	
 	
-	public int memberJoin(MemberDTO memberDTO) throws Exception{
+	public int setMemberAdd(MemberDTO memberDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
 	public List<MemberDTO> getMemberList() throws Exception{

@@ -19,12 +19,12 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="memberJoin" ,method=RequestMethod.GET)
-	public void getMemberJoin() throws Exception{
+	public void setMemberAdd() throws Exception{
 		
 	}
 	@RequestMapping(value="memberJoin" ,method=RequestMethod.POST)
-	public String getMemberJoin(MemberDTO memberDTO) throws Exception{
-		int a= memberService.memberJoin(memberDTO);
+	public String setMemberAdd(MemberDTO memberDTO) throws Exception{
+		int a= memberService.setMemberAdd(memberDTO);
 		System.out.println(a == 1);
 		return "redirect:./list";
 	}

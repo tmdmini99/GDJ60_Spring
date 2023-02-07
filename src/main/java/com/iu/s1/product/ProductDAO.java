@@ -52,6 +52,7 @@ public class ProductDAO {
 	
 	
 	
+	
 	//getMax
 	public Long getProductNum() throws Exception{
 		Connection con = DBConnection.getConnection1();
@@ -100,7 +101,7 @@ public class ProductDAO {
 	
 	
 	
-	public int setAddProdcutOption(ProductOptionDTO dto) throws Exception{
+	public int setAddProductOption(ProductOptionDTO dto) throws Exception{
 		Connection con = DBConnection.getConnection1();
 		
 		String sql = "INSERT INTO PRODUCTOPTION VALUES(PRODUCT_OPTION_SEQ.NEXTVAL,?,?,?,?)";
