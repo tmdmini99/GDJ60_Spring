@@ -37,18 +37,18 @@ public class ProductService {
 	
 	
 	
-	public int setAddProduct(ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception{
+	public int setProductAdd(ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception{
 		//product, option  두가지를 전처리함
 		
 		Long productNum = productDAO.getProductNum();
 		productDTO.setProductNum(productNum);
 		
-		int result = productDAO.setAddProduct(productDTO);
+		int result = productDAO.setProductAdd(productDTO);
 		
 		if(ar !=null){
 		for(ProductOptionDTO productOptionDTO : ar) {
 			productOptionDTO.setProductNum(productNum);
-			result = productDAO.setAddProdcutOption(productOptionDTO);
+			result = productDAO.setAddProductOption(productOptionDTO);
 			
 		}
 		}

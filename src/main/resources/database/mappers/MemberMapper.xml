@@ -11,7 +11,7 @@
   </insert>
   <select id="getMemberList" resultType="MemberDTO">
   SELECT * FROM MEMBER
-  
   </select>
+  
   
   </mapper>
