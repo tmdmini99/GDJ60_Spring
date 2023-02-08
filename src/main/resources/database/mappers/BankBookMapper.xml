@@ -13,7 +13,7 @@
   	</select>
   	
   	 <insert id="setBankBookAdd" parameterType="BankBookDTO">
-  		INSERT INTO BANKBOOK VALUES(#{bookNumber},#{bookName},#{bookRate},#{bookSale},#{bookDetail})
+  		INSERT INTO BANKBOOK VALUES(BANKBOOK_SEQ.NEXTVAL,#{bookName},#{bookRate},#{bookSale},#{bookDetail})
   	</insert> 
   	
   	<update id="setBankBookUpdate" parameterType="BankBookDTO">
