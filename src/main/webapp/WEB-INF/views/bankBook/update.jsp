@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>상품 수정 Page</h1>
-	<form action="./update" ,method="post">
+	<form action="./update" method="post">
 		상품 번호 :<input type="text" name="bookNumber" value="${update.bookNumber}" readonly>
 		이름: <input type ="text" name="bookName" value="${update.bookName}"><br>
 		이자율 : <input type="text" name="bookRate" value="${update.bookRate}"><br>
