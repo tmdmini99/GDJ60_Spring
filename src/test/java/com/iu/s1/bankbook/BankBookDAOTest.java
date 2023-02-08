@@ -50,11 +50,14 @@ public class BankBookDAOTest extends MyTestCase{
 		bankBookDTO=bankBookDAO.getBankBookDetail(bankBookDTO);
 		assertNotNull(bankBookDTO);
 	}
-	//@Test
+	@Test
 	public void setBankBookUpdate() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookNumber(1L);
+		bankBookDTO.setBookNumber(149L);
 		bankBookDTO.setBookName("aaaab");
+		bankBookDTO.setBookRate(1.1);
+		bankBookDTO.setBookSale(1);
+		bankBookDTO.setBookDetail("ddadsfdssafd");
 		
 		int a =bankBookDAO.setBankBookUpdate(bankBookDTO);
 		

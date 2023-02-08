@@ -19,10 +19,11 @@
 			<h2>Rate :${detail.bookSale}</h2>
 			<h2> Sale :${detail.bookDetail}</h2>
 			<a href="./delete?bookNumber=${detail.bookNumber}">상품 삭제</a>
+			<a href="./update?bookNumber=${detail.bookNumber}">상품 수정</a>
 		</c:when>
 		<c:otherwise>해당 상품이 없습니다</c:otherwise>
 	
 	</c:choose>
-	
+	<a href="./list">목록으로</a>
 </body>
 </html>

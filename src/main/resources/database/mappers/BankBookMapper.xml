@@ -17,7 +17,7 @@
   	</insert> 
   	
   	<update id="setBankBookUpdate" parameterType="BankBookDTO">
-  	UPDATE BANKBOOK SET BOOKNAME = #{bookName} WHERE BOOKNUMBER = #{bookNumber}
+  	UPDATE BANKBOOK SET BOOKNAME=#{bookName} ,BOOKRATE=#{bookRate}, BOOKSALE=#{bookSale}, BOOKDETAIL=#{bookDetail} WHERE BOOKNUMBER=#{bookNumber}
   	</update>
   	<delete id="setBankBookDelete" parameterType="BankBookDTO">
   	DELETE BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
