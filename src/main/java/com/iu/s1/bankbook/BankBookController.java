@@ -27,7 +27,8 @@ public class BankBookController {
 		
 	}
 	@RequestMapping(value="detail" , method=RequestMethod.GET)
-	public ModelAndView getBankDetail(BankBookDTO bankBookDTO, ModelAndView mv) throws Exception{
+	public ModelAndView getBankDetail(BankBookDTO bankBookDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		bankBookDTO=bankBookService.getBankBookDetail(bankBookDTO);
 		
 		mv.addObject("detail", bankBookDTO);
@@ -69,6 +70,7 @@ public class BankBookController {
 		int result = bankBookService.setBankBookUpdate(bankBookDTO);
 		System.out.println(result == 1);
 		mv.setViewName("redirect:./list");
+		//mv.setViewName("redirect:./detail?bookNumber="+bankBookDTO.getBookNumber());
 		return mv;
 	}
 }

@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/table.css">
 </head>
 <body>
-	<h1>BankBook List page</h1>
-	
-	<table border = 1>
+	<h1 class="title">BankBook List page</h1>
+	<div class="image">
+		<img  alt="" src="../resources/images/iu.jpg">
+	</div>	
+	<table border = "1" class="table1">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -23,8 +26,8 @@
 			<tr>
 				<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
 				<td>${dto.bookRate}</td>
-				<td><%-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
-						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> --%>
+				<td><!-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
+						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> -->
 						<!-- EL if문은 c:if로 두가지를 쓰거나 
 							choose를 사용하여 if, else if문을 대체
 							otherwise가 else if문을 대체

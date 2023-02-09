@@ -1,0 +1,51 @@
+/* 전체 선택자 */
+/* 
+ *{
+    color: red;
+} */
+
+/* 태그 선택자 */
+#id1{
+    color: blue;
+}
+h1{
+    color: blanchedalmond;
+}
+/* id 태그의 우선순위가 더 높음 */
+
+h2,h3,#id1{
+    color: yellowgreen;
+}
+
+.c1{
+    color: yellow;
+}
+s
+*{
+    margin: 0;
+    padding: 0;
+}
+.c2{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+}
+/* 자손 선택자 */
+.c2 > p{
+    color: aliceblue;
+    text-decoration: line-through;
+}
+/* 후손 선택자 */
+/* 자손 포함 */
+/* .c2 p{
+    color: yellow;
+}
+.c2 >div> p{
+    color: yellow;
+    text-decoration: underline;
+} */
+
+.c2 {
+    color: blueviolet;
+    text-decoration: line-through;
+}
