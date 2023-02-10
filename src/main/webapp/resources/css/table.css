@@ -2,6 +2,23 @@
     width: 70%;
     
     margin: 0px auto;
+    border: 1px solid black;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+.table1 th, .table1 td{
+    border: 1px solid black;
+    height: 40px;
+
+}
+
+.table1 th{
+    background-color: black;
+    color: white;
+}
+.table1 td a{
+    color: black;
+    text-decoration: none;
 }
 .title{
     width: 30%;
@@ -11,3 +28,36 @@
     width: 50%;
     margin : 0 auto;
 }
+.tb1_td{
+    text-align: center;
+}
+
+.table2{
+    width: 70%;
+    margin: 0 auto;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+.table2 th{
+    background-color: black;
+    color: white;
+    
+    border-right: 10px white solid;
+    height: 50px;
+}
+
+.table2 td{
+    
+    border-right: 10px white solid;
+    height: 50px;
+    border-bottom: 1px black solid;
+    
+}
+.table2 td a{
+    color: black;
+    text-decoration: none;
+}
+.td{
+    text-decoration: underline;
+}
+

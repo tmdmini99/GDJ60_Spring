@@ -1,0 +1,27 @@
+.c1{
+    list-style: none;
+    display: inline-block;
+    margin: 100px;
+}
+.c1 > li, .c2 >li{
+    display: inline-block;
+}
+.c2{
+    list-style: none;
+    display: inline-block;
+}
+.c3{
+    display: inline-block;
+}
+.c3{
+    float:left;
+}
+.c4{
+    display: inline-block;
+}
+.c4{
+    float:left;
+}
+
+
+

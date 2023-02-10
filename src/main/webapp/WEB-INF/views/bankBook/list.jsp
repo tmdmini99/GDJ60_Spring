@@ -13,7 +13,7 @@
 	<div class="image">
 		<img  alt="" src="../resources/images/iu.jpg">
 	</div>	
-	<table border = "1" class="table1">
+	<table class="table2">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -25,8 +25,8 @@
 			<c:forEach items="${list}" var="dto">
 			<tr>
 				<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
-				<td>${dto.bookRate}</td>
-				<td><!-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
+				<td class="tb1_td td1 td">${dto.bookRate}</td>
+				<td class="tb1_td td"><!-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
 						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> -->
 						<!-- EL if문은 c:if로 두가지를 쓰거나 
 							choose를 사용하여 if, else if문을 대체
