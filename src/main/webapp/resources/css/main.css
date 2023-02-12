@@ -17,15 +17,10 @@ header{
     height: 100%;
     padding: 13PX 0;
     box-sizing: border-box;
-    
-
 }
 .header_nav{
     width: 40%;
     height: 100%;
-    
-    
-
 }
 .header_nav >ul{
     display: flex;
