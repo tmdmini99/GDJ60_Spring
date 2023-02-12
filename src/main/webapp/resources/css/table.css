@@ -53,6 +53,9 @@
     border-bottom: 1px black solid;
     
 }
+.table2 th:last-child, .table2 td:last-child{
+		border-right:none;
+}
 .table2 td a{
     color: black;
     text-decoration: none;
@@ -60,4 +63,3 @@
 .td{
     text-decoration: underline;
 }
-
