@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/table.css">
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<h1 class="title">BankBook List page</h1>
 	<div class="image">
 		<img  alt="" src="../resources/images/iu.jpg">

@@ -9,28 +9,18 @@
 <meta charset="UTF-8">
 <title>기모찌</title>
   <link rel="stylesheet" href="../resources/css/table.css">
+	<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	
+	<c:import url="../template/header.jsp"></c:import>
 	<h1 class="title">Product List</h1>
 	<!--  <a href>는 URL 경로를 사용 상대경로 절대 경로 사용 가능 -->
 	<a href = "./detail?productNum=28">Product Detail</a>
 	
-	<% List<ProductDTO> ar = (List<ProductDTO>)request.getAttribute("list"); 
-			for(ProductDTO productDTO : ar){
-				
-			
-	
-	%>
-	
-	<h3><%=productDTO.getProductName() %></h3>
-	<h3><%=productDTO.getProductJumsu()%></h3>
+
 	
 	
-	<%} %>
-	<hr>
-	
-	<table class="table1">
+	<table class="table2">
 		<thead>
 			<tr>
 				<th>상품명</th><th>평점</th>
@@ -48,7 +38,6 @@
 	</table>
 		<a class="btn btn-danger" href="./productAdd">상품등록</a>
 	
-	<h3>${requestScope.list}</h3>
-	
+
 </body>
 </html>
