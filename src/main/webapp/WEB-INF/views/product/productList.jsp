@@ -38,6 +38,6 @@
 	</table>
 		<a class="btn btn-danger" href="./productAdd">상품등록</a>
 	
-
+<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
