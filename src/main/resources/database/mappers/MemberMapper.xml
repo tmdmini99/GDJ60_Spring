@@ -6,9 +6,16 @@
 
   <mapper namespace="com.iu.s1.member.MemberDAO">
   <insert id="memberJoin" parameterType="MemberDTO">
-  INSERT INTO MEMBER 
-  VALUES(#{id},#{pw},#{name},#{address},#{phone},#{email})
+  	INSERT INTO MEMBER 
+  	VALUES(#{id},#{pw},#{name},#{address},#{phone},#{email})
   </insert>
+ <insert id="" parameterType="MemberDTO">
+ 		INSERT INTO MEMBER_ROLE(ID,ROLENUM)
+ 		VALUES(#{id},(SELCET * FROM ROLE WHERE ROLENAME =#{roleName}))
+ </insert>
+ 
+ 
+ 
   <select id="getMemberList" resultType="MemberDTO">
   SELECT * FROM MEMBER
   </select>
