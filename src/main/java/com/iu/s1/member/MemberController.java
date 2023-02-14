@@ -18,11 +18,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="memberJoin" ,method=RequestMethod.GET)
+	@RequestMapping(value="memberAdd" ,method=RequestMethod.GET)
 	public void setMemberAdd() throws Exception{
 		
 	}
-	@RequestMapping(value="memberJoin" ,method=RequestMethod.POST)
+	@RequestMapping(value="memberAdd" ,method=RequestMethod.POST)
 	public String setMemberAdd(MemberDTO memberDTO) throws Exception{
 		int a= memberService.setMemberAdd(memberDTO);
 		System.out.println(a == 1);
@@ -38,10 +38,19 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value="memberLogin")
-	public void getMemberLogin() {
-		
+	@RequestMapping(value="memberLogin" ,method = RequestMethod.GET)
+	public ModelAndView getMemberLogin() throws Exception{
+		ModelAndView mv = new ModelAndView();
 		System.out.println("MemberLogin");
+		mv.setViewName("member/memberLogin");
+		return mv;
+	}
+	@RequestMapping(value="memberLogin" ,method = RequestMethod.POST)
+	public ModelAndView getMemberLogin(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberService.getMemberLogin(memberDTO);
+		mv.setViewName("redirect:../");
+		return mv;
 	}
 	
 	@RequestMapping(value="memberPage")
@@ -50,5 +59,6 @@ public class MemberController {
 		mv.setViewName("member/memberPage");
 		return mv;
 	}
+	
 	
 }
