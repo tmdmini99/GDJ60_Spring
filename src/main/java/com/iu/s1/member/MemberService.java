@@ -20,8 +20,13 @@ public class MemberService {
 	public List<MemberDTO> getMemberList() throws Exception{
 		return memberDAO.getMemberList();
 	}
-	public MemberDTO getMemberLogin(MemberDTO memberDTO){
+	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getMemberLogin(memberDTO);
 	}
-	
+	public MemberDTO getMemberPage(MemberDTO memberDTO) throws Exception{
+		return memberDAO.getMemberPage(memberDTO);
+	}
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setMemberUpdate(memberDTO);
+	}
 }

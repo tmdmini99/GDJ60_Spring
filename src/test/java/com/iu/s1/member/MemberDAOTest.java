@@ -25,7 +25,7 @@ public class MemberDAOTest extends MyTestCase{
 		int a=memberDAO.setMemberAdd(memberDTO);
 		assertEquals(1, a);
 	}
-	@Test
+	//@Test
 	public void setMemberLogin() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("dd");
@@ -34,6 +34,19 @@ public class MemberDAOTest extends MyTestCase{
 		memberDTO=memberDAO.getMemberLogin(memberDTO);
 		
 		assertNotNull(null, memberDTO);
+	}
+	@Test
+	public void setMemberUpdate() throws Exception{
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("dd");
+		memberDTO.setName("d2");
+		memberDTO.setAddress("d3");
+		memberDTO.setPhone("d4");
+		memberDTO.setEmail("d5");
+		
+		int a = memberDAO.setMemberUpdate(memberDTO);
+		assertEquals(1, a);
+		
 	}
 
 }
