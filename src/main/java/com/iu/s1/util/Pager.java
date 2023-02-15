@@ -23,6 +23,7 @@ public class Pager {
 	private boolean before;
 	private boolean after;
 	
+	private Long totalPage;
 	
 	//startRow,lastRow 계산 하는 메서드
 	public void makeRow() {
@@ -37,7 +38,7 @@ public class Pager {
 		
 		//1.전체 row의 갯수를 구하기
 		//2.총 page의 갯수
-		Long totalPage = totalCount/this.getPerPage();
+		this.totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage()!=0) {
 			totalPage++;
 		}
@@ -104,6 +105,14 @@ public class Pager {
 	
 	
 	
+	public Long getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(Long totalPage) {
+		this.totalPage = totalPage;
+	}
+
 	public boolean isBefore() {
 		return before;
 	}

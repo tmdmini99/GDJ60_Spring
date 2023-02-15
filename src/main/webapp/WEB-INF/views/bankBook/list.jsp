@@ -48,9 +48,14 @@
 			<div class="row">
 				<nav aria-label="Page navigation example">
 		 			<ul class="pagination">
+			    		<li class="page-item ">
+			      			<a class="page-link" href="./list?page" aria-label="Previous">
+			        			<span aria-hidden="true">&laquo;</span>
+			      			</a>
+			    		</li>
 			    		<li class="page-item ${pager.before ? 'disabled' : ''}">
 			      			<a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
-			        			<span aria-hidden="true">&laquo;</span>
+			        			<span aria-hidden="true">&lsaquo;</span> <!--lsaquo는 꺽쇠 하나 laquo는 꺽쇠 두개  -->
 			      			</a>
 			    		</li>
 			    		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -59,6 +64,11 @@
 			    		<!-- &gt = <꺽쇠를 표현 &lt는 >꺽쇠를 표현 -->
 			    		<li class="page-item ${pager.after eq false ? 'disabled' : ''}"> <!--  -->
 			      			<a class="page-link " href="./list?page=${pager.lastNum+1}"  aria-label="Next">
+			        			<span aria-hidden="true">&rsaquo;</span>
+			      			</a>
+			    		</li>
+			    		<li class="page-item "> <!--  -->
+			      			<a class="page-link " href="./list?page=${pager.totalPage}"  aria-label="Next">
 			        			<span aria-hidden="true">&raquo;</span>
 			      			</a>
 			    		</li>
