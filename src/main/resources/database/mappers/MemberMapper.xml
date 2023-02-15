@@ -16,15 +16,10 @@
  
  
  
-  <select id="getMemberList" resultType="MemberDTO">
-  	SELECT * FROM MEMBER
-  </select>
   <select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-  	SELECT ID FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
-  </select>
-  <select id="getMemberPage" parameterType="MemberDTO" resultType="MemberDTO">
   	SELECT * FROM MEMBER WHERE ID=#{id}
   </select>
+  
   <update id="setMemberUpdate" parameterType="MemberDTO">
   	UPDATE MEMBER SET NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email} 
   	WHERE ID=#{id}

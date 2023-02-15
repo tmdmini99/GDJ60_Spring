@@ -16,41 +16,64 @@
 			<h1 class="title col-md-7 mx-auto text-center border-bottom border-dark pb-4">BankBook List page</h1>
 		</div>
 		<div class="row col-md-7 mx-auto">
-		<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>상품명</th>
-				<th>이자율</th>
-				<th>판매여부</th>
-			</tr>
-			</thead>
-			<tbody class="table-group-divider">
-				<c:forEach items="${list}" var="dto">
+			<table class="table table-hover">
+			<thead>
 				<tr>
-					<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
-					<td class="tb1_td td1 td">${dto.bookRate}</td>
-					<td class="tb1_td td"><!-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
-						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> -->
-						<!-- EL if문은 c:if로 두가지를 쓰거나 
-							choose를 사용하여 if, else if문을 대체
-							otherwise가 else if문을 대체
-						 -->
-							<c:choose>
-							<c:when test="${dto.bookSale eq 1}">판매중</c:when>
-							<c:otherwise>판매중단</c:otherwise>
-
-							</c:choose>						
-					</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+					<th>상품명</th>
+					<th>이자율</th>
+					<th>판매여부</th>
+				</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<c:forEach items="${list}" var="dto">
+					<tr>
+						<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
+						<td class="tb1_td td1 td">${dto.bookRate}</td>
+						<td class="tb1_td td"><!-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
+							<c:if test="${dto.bookSale eq 0}">판매중단</c:if> -->
+							<!-- EL if문은 c:if로 두가지를 쓰거나 
+								choose를 사용하여 if, else if문을 대체
+								otherwise가 else if문을 대체
+							 -->
+								<c:choose>
+								<c:when test="${dto.bookSale eq 1}">판매중</c:when>
+								<c:otherwise>판매중단</c:otherwise>
 	
+								</c:choose>						
+						</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<div class="row">
+				<nav aria-label="Page navigation example">
+		 			<ul class="pagination">
+			    		<li class="page-item ${pager.before ? 'disabled' : ''}">
+			      			<a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+			        			<span aria-hidden="true">&laquo;</span>
+			      			</a>
+			    		</li>
+			    		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			    		<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+			    		</c:forEach>
+			    		<!-- &gt = <꺽쇠를 표현 &lt는 >꺽쇠를 표현 -->
+			    		<li class="page-item ${pager.after eq false ? 'disabled' : ''}"> <!--  -->
+			      			<a class="page-link " href="./list?page=${pager.lastNum+1}"  aria-label="Next">
+			        			<span aria-hidden="true">&raquo;</span>
+			      			</a>
+			    		</li>
+		  			</ul>
+				</nav>
+		
+			</div>
 		
 		</div>
+		
+		
 		<div class="row col-md-7 mx-auto">
 			<a href="./add" class ="btn btn-primary col-2">상품 등록</a>
 		</div>
+		
 	</div>
 	
 	

@@ -19,25 +19,25 @@
 				<div class="mb-3 row col-md-7 mx-auto">
 					<label for="name" class="form-label col-sm-2">NAME</label> 
 					<div class="col-sm-10">
-						<input type="text" id="name" name="name" value="${member.name}">
+						<input type="text" id="name" name="name" value="${memberDTO.name}">
 					</div>
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto">
 					<label for="address" class="form-label col-sm-2">ADDRESS</label> 
 					<div class="col-sm-10">
-						<input type="text" id="address" name="address" value="${member.address}"> 
+						<input type="text" id="address" name="address" value="${memberDTO.address}"> 
 					</div>
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto">
 					<label for="phone" class="form-label col-sm-2">PHONE</label> 
 					<div class="col-sm-10">
-						<input type="text" id="phone" name="phone" value="${member.phone}">
+						<input type="text" id="phone" name="phone" value="${memberDTO.phone}">
 					</div>
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto">
 					<label for="email" class="form-label col-sm-2">EMAIL</label> 
 					<div class="col-sm-10">
-						<input type="text" id="email" name="email" value="${member.email}">
+						<input type="text" id="email" name="email" value="${memberDTO.email}">
 					</div>
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto">
