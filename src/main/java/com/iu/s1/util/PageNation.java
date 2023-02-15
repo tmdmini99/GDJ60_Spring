@@ -1,6 +1,6 @@
 package com.iu.s1.util;
 
-public class pageNation {
+public class PageNation {
 	
 	private Long startRow;
 	private Long lastRow;
@@ -10,6 +10,14 @@ public class pageNation {
 	private Long perpage;
 	
 	
+	
+	public void makeRow() {
+		
+		
+		
+		
+		
+	}
 	
 	
 	
@@ -47,12 +55,19 @@ public class pageNation {
 		this.lastNum = lastNum;
 	}
 	public Long getPage() {
+		if(this.page == null || this.page == 0) {
+			this.setPage(1L);
+		}
+		
 		return page;
 	}
 	public void setPage(Long page) {
 		this.page = page;
 	}
 	public Long getPerpage() {
+		if(this.perpage == null || this.perpage == 0) {
+			this.setPerpage(10L);
+		}
 		return perpage;
 	}
 	public void setPerpage(Long perpage) {
