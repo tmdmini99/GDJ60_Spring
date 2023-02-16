@@ -50,6 +50,8 @@
 		 			<ul class="pagination">
 			    		<li class="page-item ">
 			      			<a class="page-link" href="./list?page" aria-label="Previous">
+			        			<!-- 						==page=1 -->
+			        			
 			        			<span aria-hidden="true">&laquo;</span>
 			      			</a>
 			    		</li>
@@ -59,7 +61,7 @@
 			      			</a>
 			    		</li>
 			    		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			    		<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+			    		<li class="page-item"><a class="page-link ${pager.page eq i ? 'active' : '' }" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			    		</c:forEach>
 			    		<!-- &gt = <꺽쇠를 표현 &lt는 >꺽쇠를 표현 -->
 			    		<li class="page-item ${pager.after eq false ? 'disabled' : ''}"> <!--  -->
@@ -76,7 +78,32 @@
 				</nav>
 		
 			</div>
-		
+			<!-- 검색창 -->
+			<form class="row g-3" action="./list" method="name">
+				<div class="col-auto">
+					<label for="kind" class="visually-hidden">Kind</label>
+					<select class="form-select" name="kind" id="kind" aria-label="Default select example">
+						<option value="title">상품명</option>
+						<option value="contents">상품내용</option>
+						
+					</select>
+				</div>
+				<div class="col-auto">
+					<label for="Search" class="visually-hidden">Search</label>
+					<input type="text" class="form-control" name="search" id="search" placeholder="검색어 입력">
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">검색</button>
+				</div>
+			</form>
+			
+			
+			
+			
+			
+			
+			
+			
 		</div>
 		
 		

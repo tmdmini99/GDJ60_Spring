@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.Pager;
+
 @Controller
 @RequestMapping(value="/product/*")//URL localhost/s1/ -->루트 경로 뒤에
 //URL : localhost/s1/product/* product/뒤에 오는 모든  URL은 여기로 옴 
@@ -24,16 +26,16 @@ public class ProductController {
 	
 	
 	
-	@RequestMapping(value ="list")
-	public ModelAndView getProductList(ModelAndView mv) throws Exception{
+	@RequestMapping(value ="list", method = RequestMethod.GET)
+	public ModelAndView getProductList(ModelAndView mv, Pager pager) throws Exception{
 		System.out.println("Product List");// URL이 localhost/s1/product/list가 올경우
 		
-		List<ProductDTO> ar=productService.getProductList();
+		List<ProductDTO> ar=productService.getProductList(pager);
 		
 		
 		mv.setViewName("product/productList");
 		mv.addObject("list", ar);
-		
+		mv.addObject("pager", pager);
 		System.out.println(ar.size()>0);
 		
 		return mv; // 파일 경로 /WEB-INF/views 가 생략

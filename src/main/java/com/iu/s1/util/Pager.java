@@ -2,10 +2,27 @@ package com.iu.s1.util;
 
 public class Pager {
 	
+	//검색 종류(사용할 컬럼)
+	private String kind;
+	//검색어
+	private String search;
+	
+	
+	
+	
+	
 	//한페이지에 출력할 Row의 갯수 
 	private Long perPage;
+	
+	//한 블럭(페이지 수)에 출력할 번호의 갯수
+	private Long perBlock;
+	
 	//Client가 보고싶은페이지 번호(parameter로 받아옴)
 	private Long page;
+	
+	//전체 page 갯수
+	private Long totalPage;
+	
 	
 	//Table에서 조회할 시작번호
 	private Long startRow;
@@ -15,6 +32,7 @@ public class Pager {
 	//전체 row의 갯수를 담을 변수
 	//private Long totalCount;
 	
+	
 	//JSP에 출력하기 위한 시작번호
 	private Long startNum;
 	//JSP에 출력하기 위한 끝번호
@@ -23,7 +41,7 @@ public class Pager {
 	private boolean before;
 	private boolean after;
 	
-	private Long totalPage;
+	
 	
 	//startRow,lastRow 계산 하는 메서드
 	public void makeRow() {
@@ -40,24 +58,24 @@ public class Pager {
 		//2.총 page의 갯수
 		this.totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage()!=0) {
-			totalPage++;
+			this.totalPage++;
 		}
-		if(this.getPage() >totalPage) {
-			this.setPage(totalPage);
+		if(this.getPage() >this.totalPage) {
+			this.setPage(this.totalPage);
 		}
 		//3.한 블럭(페이지 수)에 출력할 번호의 갯수
-		Long perBlock=5L;
+		
 		
 		//4. 총 블럭의 수
-		Long totalBlock=totalPage/perBlock;
-		if(totalPage%perBlock !=0) {
+		Long totalBlock=this.totalPage/this.getPerBlock();
+		if(this.totalPage%this.getPerBlock() !=0) {
 			totalBlock++;
 		}
 		//5. page 번호로 현재 블럭 번호 구하기
 		// page1-5번이면 curBlock은 1이 되어야함
 		// page 6-10 curBlock 2
-		Long curBlock=this.getPage()/perBlock;
-		if(this.getPage()%perBlock !=0) {
+		Long curBlock=this.getPage()/this.getPerBlock();
+		if(this.getPage()%this.getPerBlock() !=0) {
 			curBlock++;
 		}
 		
@@ -69,18 +87,20 @@ public class Pager {
 		 * 
 		 * 
 		 * */
-		this.startNum=(curBlock-1)*perBlock+1;
-		this.lastNum=curBlock*perBlock;
+		this.startNum=(curBlock-1)*this.getPerBlock()+1;
+		this.lastNum=curBlock*this.getPerBlock();
 		
 		this.after=true;
 		if(curBlock==totalBlock){
-			lastNum=totalPage;
+			lastNum=this.totalPage;
 			this.after=false;
 		}
 		this.before=false;
 		if(curBlock==1) {
 			this.before=true;
 		}
+		
+		
 		
 		
 	}
@@ -100,8 +120,40 @@ public class Pager {
 //		this.totalCount = totalCount;
 //	}
 
+	
+	
+	
 
+	public Long getPerBlock() {
+		
+		if(this.perBlock == null ||this.perBlock <1) {
+			this.perBlock=5L;
+		}
+		return perBlock;
+	}
 
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(search == null) {
+			search="";
+		}
+		return search; //"%"+search+"%";
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public void setPerBlock(Long perBlock) {
+		this.perBlock = perBlock;
+	}
 	
 	
 	
@@ -109,9 +161,7 @@ public class Pager {
 		return totalPage;
 	}
 
-	public void setTotalPage(Long totalPage) {
-		this.totalPage = totalPage;
-	}
+
 
 	public boolean isBefore() {
 		return before;
