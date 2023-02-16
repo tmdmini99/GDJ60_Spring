@@ -19,7 +19,7 @@
 				<h1 class="title mx-auto text-center  col-md-7">BankBook AddPage</h1>
 			</div>
 			<div class="row justify-content-center">
-			<form class="col-md-7" action="./add" method="post">
+			<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 				<div class="mb-3">
 					<label for="bookName" class="form-label">제품명</label> 
 					<input class="form-control" id="bookName" type="text" name="bookName" placeholder="제품명 입력">
