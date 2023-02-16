@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.util.DBConnection;
+import com.iu.s1.util.Pager;
 
 @Repository
 public class ProductDAO {
@@ -20,7 +21,18 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession; //Mapper 위치
 	private final String NAMESPACE="com.iu.s1.product.ProductDAO.";
-	// 어떤 mapper를 쓸껀지 정하는건 NAMESPACE
+	
+	
+	
+	
+	public Long getProductCount(Pager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getProductCount", pager);
+	}
+	
+	
+	
+	
+	// 어떤 mapper를 쓸껀지 정하는건 NAMESPACE 매개변수 붙이면 return뒤에 변수 넣어야함
 	//매개변수는 DTO로 받는게 BEST 수업때문에 Long으로 받음
 		public int setProductDelete(Long productNum) throws Exception {
 			//매개변수의 명을 Mapper에 그대로 적어야함
@@ -114,8 +126,8 @@ public class ProductDAO {
 	
 	// Product 메서드
 	
-	public List<ProductDTO> getProductList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getProductList");
+	public List<ProductDTO> getProductList(Pager pager)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getProductList",pager);
 	}
 	
 	

@@ -15,9 +15,9 @@
 			
 			<h2>Number : ${detail.bookNumber}</h2>
 			<h2>Title : ${detail.bookName}</h2>
-			<h2>Detail :${detail.bookRate}</h2>
-			<h2>Rate :${detail.bookSale}</h2>
-			<h2> Sale :${detail.bookDetail}</h2>
+			<h2>Rate :${detail.bookRate}</h2>
+			<h2>Sale :${detail.bookSale}</h2>
+			<h2>Detail :${detail.bookDetail}</h2>
 			<a href="./delete?bookNumber=${detail.bookNumber}">상품 삭제</a>
 			<a href="./update?bookNumber=${detail.bookNumber}">상품 수정</a>
 		</c:when>

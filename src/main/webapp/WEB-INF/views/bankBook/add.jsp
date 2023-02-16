@@ -32,7 +32,12 @@
 					<label for="bookDetail" class="form-label">상세설명</label>
 					<textarea class="form-control" id="bookDetail" name="bookDetail"
 						rows="3"></textarea>
-					<br>
+					
+				</div>
+				<div class="mb-3">
+					<label for="files" class="form-label">Image</label>
+					<input type="file" class="form-control" id="files" name="pic">
+					
 				</div>
 				<div class="mb-3">
 					<label for="bookDetail" class="form-label">판매여부</label>

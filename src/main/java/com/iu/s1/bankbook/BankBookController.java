@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.s1.util.Pager;
 
 @Controller
 @RequestMapping(value = "/bankBook/*")
@@ -18,10 +19,14 @@ public class BankBookController {
 	
 	//list
 	@RequestMapping(value = "list" , method=RequestMethod.GET)
-	public ModelAndView getBankBookList() throws Exception{
+	public ModelAndView getBankBookList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BankBookDTO> ar = bankBookService.getBankBookList();
+		List<BankBookDTO> ar = bankBookService.getBankBookList(pager);
+		
+		//자바의 특성을 이용하여 mv.addObject("pager",pager); 에서 따로 선언하지 않아도 매개변수로 가져온 값에 저장하여 그 값을 다시 내보냄
+		//pager의 주소값을 service로 넘겨 주고 그 주소값의 값을 바꾼거기 때문에 다시 보내주면 그 주소값이 넘어가서 바뀐값을 출력
 		mv.addObject("list", ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("/bankBook/list");
 		return mv;
 		
