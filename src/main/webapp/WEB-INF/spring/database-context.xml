@@ -3,13 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
+		<property name="location" value="classpath:database/info/dbInfo.properties"></property>
+	</bean>
+	
+	
+	
 	<!-- mybatis 객체 사용하기 위해 객체 생성 -->
 	<!--  Connection -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-		<property name="username" value="user01"></property>
-		<property name="password" value="user01"></property>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="driverClassName" value="${driver}"></property>
 	</bean>
 
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
