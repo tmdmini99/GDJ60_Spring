@@ -18,6 +18,13 @@
 			<h2>Rate :${detail.bookRate}</h2>
 			<h2>Sale :${detail.bookSale}</h2>
 			<h2>Detail :${detail.bookDetail}</h2>
+			<div>
+				<!-- bankBookDTO에 있는 멤버 변수 bankBOokImgDTO안에 있는 fileName을 꺼내옴 -->
+				<c:if test="${not empty detail.bankBookImgDTO }">
+				<img alt="이미지없음" src="../resources/upload/bankBook/${detail.bankBookImgDTO.fileName}">
+				</c:if>
+			</div>
+			
 			<a href="./delete?bookNumber=${detail.bookNumber}">상품 삭제</a>
 			<a href="./update?bookNumber=${detail.bookNumber}">상품 수정</a>
 		</c:when>
