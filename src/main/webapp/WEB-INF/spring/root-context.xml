@@ -13,7 +13,8 @@
       </bean>
 		
 		
-		
-		
-		
+		 <!-- test 시 가짜 servletContext 객체를 생성 -->
+		<!-- <bean class="org.springframework.mock.web.MockServletContext" id="servletContext"></bean>
+		 -->
+		 
 </beans>

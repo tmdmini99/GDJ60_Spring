@@ -36,7 +36,7 @@ public class MemberController {
 	public String setMemberAdd(MemberDTO memberDTO) throws Exception{
 		int a= memberService.setMemberAdd(memberDTO);
 		
-		return "redirect:./list";
+		return "redirect:/";
 	}
 	
 	
