@@ -45,6 +45,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			
+			<!-- Paging -->
 			<div class="row">
 				<nav aria-label="Page navigation example">
 		 			<ul class="pagination">
