@@ -21,7 +21,7 @@
 <h2>${dto.phone}</h2>
 <h2>${dto.email}</h2>
 </c:forEach>
-	<a class="btn btn-danger" href="./memberJoin">회원가입</a>
+	<a class="btn btn-danger" href="./memberAdd">회원가입</a>
 	
 </body>
 </html>

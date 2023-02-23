@@ -18,7 +18,7 @@
 					<c:choose>
 						<c:when test="${empty member}">
 							<li class="nav-item"><a class="nav-link" href="/member/memberLogin">LOGIN</a></li>
-							<li class="nav-item"><a class="nav-link" href="/member/memberAdd">JOIN</a></li>
+							<li class="nav-item"><a class="nav-link" href="/member/memberAgree">JOIN</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a class="nav-link" href="/member/memberLogout">LOGOUT</a></li>
