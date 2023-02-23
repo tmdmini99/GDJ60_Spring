@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.iu.s1.board.qna.QnaDAO">
+  <sql id="Condition">
+  	<if test="kind == 'title'">
+  		<trim prefix="where">
+  			TITLE LIKE '%'||#{search}||'%'
+  		</trim>
+  	</if>
+  	<if test="kind == 'contents'">
+  		<trim prefix="where">
+  			CONTENTS LIKE '%'||#{search}||'%'
+  		</trim>
+  	</if>
+  	<if test="kind =='writer'">
+  		<trim prefix="where">
+  			WRITER LIKE '%'||#{search}||'%'
+  		</trim>
+  	</if>
+  </sql>
+  
+  <select id="getTotalCount" parameterType="Pager" resultType="Long">
+  	SELECT COUNT(NUM) FROM QNA
+  	<include refid="Condition"></include>
+  </select>
+  
+  <select id="getBoardList" parameterType="Pager" resultType="QnaDTO">
+  SELECT * FROM
+  (SELECT ROWNUM R, Q.* FROM
+  	(SELECT NUM,TITLE,WRITER,REGDATE,HIT FROM QNA
+  			<include refid="Condition"></include>
+  		ORDER BY NUM DESC
+  	) Q )
+  	WHERE R BETWEEN #{startRow} AND #{lastRow}
+  </select>
+  
+  </mapper>
