@@ -48,11 +48,37 @@
   </select>
   
   <insert id="setBoardAdd" parameterType="BbsDTO">
-  	INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
+  <selectKey keyProperty="num" order="BEFORE" resultType="Long">
+  SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+  </selectKey>
+  
+  	INSERT INTO NOTICE VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0)
   </insert>
   
-  <select id="getBoardDetail" parameterType="BoardDTO" resultType="NoticeDTO">
-  	SELECT * FROM NOTICE WHERE NUM=#{num}
+  <select id="getBoardDetail" parameterType="BoardDTO" resultMap="notice">
+  	SELECT * FROM NOTICE N
+  								LEFT JOIN
+  								NOTICEFILES NF
+  								ON(N.NUM = NF.NUM)
+  	WHERE N.NUM=#{num}
   </select>
-  
+   <resultMap type="NoticeDTO" id="notice">
+  	<id column="NUM" property="num"/>
+  	<result column="TITLE" property="title"/>
+  	<result column="CONTENTS" property="contents"/>
+  	<result column="WRITER" property="writer"/>
+  	<result column="REGDATE" property="regDate"/>
+  	<result column="HIT" property="hit"/>
+  	
+  	<!-- <collection column="NUM" property="noticeImgDTO" select="getBoardDetail" ofType="Long" javaType="java.util.List">
+  		<id column="FILENUM" property="fileNum"/>
+  		<result column="FILENAME" property="fileName"/>
+  		<result column="ORINAME" property="oriName"/>
+  		
+  	</collection> -->
+  </resultMap>
+  	
+  	<insert id="setBoardImgAdd" parameterType="NoticeImgDTO">
+  		INSERT INTO NOTICEFILES VALUES(NOTICE_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
+  	</insert>
   </mapper>

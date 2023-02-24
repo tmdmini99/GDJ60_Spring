@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.notice.NoticeImgDTO;
 import com.iu.s1.util.Pager;
 
 @Repository
@@ -60,6 +61,10 @@ public class QnaDAO implements BoardDAO {
 	}
 	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	public int setBoardImgAdd(QnaImgDTO qnaImgDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setBoardImgAdd", qnaImgDTO);
 	}
 
 }

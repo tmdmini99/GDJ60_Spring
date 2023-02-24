@@ -15,6 +15,10 @@
 	 <h3>${dto.title}</h3>
 	 <h3>${dto.writer}</h3>
 	 <p>${dto.contents}</p>
+	 
+	 <c:forEach items="dto" var="img">
+	 <img alt="" src="/resources/${boardName}/img/${img.noticeImgDTO.fileName}">
+	 </c:forEach>
 	
 	<c:if test="${boardName ne 'notice'}">	
 	<a href="./reply?num=${dto.num}" class="btn btn-info">답글</a>

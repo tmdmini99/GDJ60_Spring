@@ -58,4 +58,8 @@
   <insert id="setReplyAdd" parameterType="QnaDTO">
   	INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0,#{ref},#{step},#{depth})
   </insert>
+  
+  <insert id="setBoardImgAdd" parameterType="QnaImgDTO">
+  		INSERT INTO QNAFILES VALUES(Qna_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
+  	</insert>
   </mapper>

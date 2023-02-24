@@ -2,8 +2,11 @@ package com.iu.s1.board.qna;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
@@ -11,6 +14,7 @@ import com.iu.s1.board.BbsService;
 import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardService;
+import com.iu.s1.util.FileManager;
 import com.iu.s1.util.Pager;
 
 @Service
@@ -19,6 +23,9 @@ public class QnaService implements BoardService{
 	//BoardDAO 사용 가능
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	@Autowired
+	private ServletContext servletContext;
 	
 	
 	@Override
@@ -39,9 +46,25 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
+	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.setBoardAdd(bbsDTO);
+		String realPath = servletContext.getRealPath("/resources/qna/imgs");
+		FileManager fileManager = new FileManager();
+		int a=qnaDAO.setBoardAdd(bbsDTO);
+		System.out.println(bbsDTO.getNum());
+		for(MultipartFile f : files) {
+			if(f.isEmpty()) {
+				continue;
+			}
+			String name = fileManager.fileSave(f, realPath);
+			QnaImgDTO qnaImgDTO = new QnaImgDTO();
+			qnaImgDTO.setFileName(name);
+			qnaImgDTO.setNum(bbsDTO.getNum());
+			qnaImgDTO.setOriName(f.getOriginalFilename());
+			a = qnaDAO.setBoardImgAdd(qnaImgDTO);
+			
+		}
+		return a;
 	}
 
 	@Override

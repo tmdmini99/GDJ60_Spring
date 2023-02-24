@@ -46,7 +46,7 @@ public class NoticeController {
 	@PostMapping("add")
 	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result=noticeService.setBoardAdd(noticeDTO);
+		int result=noticeService.setBoardAdd(noticeDTO,files);
 		
 		String message="등록 실패";
 		if(result>0) {

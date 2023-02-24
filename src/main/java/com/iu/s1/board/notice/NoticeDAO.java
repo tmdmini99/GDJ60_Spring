@@ -53,5 +53,9 @@ public class NoticeDAO implements BoardDAO {
 		
 		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
 	}
+	
+	public int setBoardImgAdd(NoticeImgDTO noticeImgDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setBoardImgAdd", noticeImgDTO);
+	}
 
 }
