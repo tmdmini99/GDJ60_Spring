@@ -40,7 +40,7 @@
 				//document.getElementById("p"+i).remove();
 				console.log(this.getAttribute('data-div-id'));
 				let id= this.getAttribute('data-div-id');
-				//document.getElementById(id).remove();
+				document.getElementById(id).remove();
 			})
 		}
 	</script>

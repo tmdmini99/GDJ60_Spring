@@ -47,4 +47,12 @@
   	WHERE R BETWEEN #{startRow} AND#{lastRow}
   </select>
   
+  <insert id="setBoardAdd" parameterType="BbsDTO">
+  	INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
+  </insert>
+  
+  <select id="getBoardDetail" parameterType="BoardDTO" resultType="NoticeDTO">
+  	SELECT * FROM NOTICE WHERE NUM=#{num}
+  </select>
+  
   </mapper>

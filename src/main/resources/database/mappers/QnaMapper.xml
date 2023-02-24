@@ -32,11 +32,30 @@
   <select id="getBoardList" parameterType="Pager" resultType="QnaDTO">
   SELECT * FROM
   (SELECT ROWNUM R, Q.* FROM
-  	(SELECT NUM,TITLE,WRITER,REGDATE,HIT FROM QNA
+  	(SELECT NUM,TITLE,WRITER,REGDATE,HIT,DEPTH FROM QNA
   			<include refid="Condition"></include>
-  		ORDER BY NUM DESC
+  		ORDER BY REF DESC, STEP ASC
   	) Q )
   	WHERE R BETWEEN #{startRow} AND #{lastRow}
   </select>
   
+  <insert id="setBoardAdd" parameterType="BbsDTO">
+  <selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  	SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  </selectKey>
+  INSERT INTO QNA VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0,#{num},0,0)
+  </insert>
+  
+  <select id="getBoardDetail" parameterType="BoardDTO" resultType="QnaDTO">
+  SELECT * FROM QNA WHERE NUM=#{num}
+  </select>
+  
+  <update id="setStepUpdate" parameterType="QnaDTO">
+  	UPDATE QNA SET STEP=STEP+1
+  	WHERE REF =#{ref} AND STEP > #{step}
+  </update>
+  
+  <insert id="setReplyAdd" parameterType="QnaDTO">
+  	INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0,#{ref},#{step},#{depth})
+  </insert>
   </mapper>

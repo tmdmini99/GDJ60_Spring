@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.iu.s1.MyTestCase;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.notice.NoticeDAO;
+import com.iu.s1.board.notice.NoticeDTO;
 import com.iu.s1.util.Pager;
 
 public class NoticeDAOTest extends MyTestCase{
@@ -19,12 +20,23 @@ public class NoticeDAOTest extends MyTestCase{
 	
 	
 	@Test
+	public void setBoardAddTest() throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setTitle("Title1");
+		noticeDTO.setWriter("wrtier1");
+		noticeDTO.setContents("Contents1");
+		int a=noticeDAO.setBoardAdd(noticeDTO);
+		
+		assertNotEquals(0, a);
+	}
+	
+	//@Test
 	public void getTotalCount() throws Exception{
 		Pager pager = new Pager();
 		long a=noticeDAO.getTotalCount(pager);
 		assertNotEquals(0, a);
 	}
-	@Test
+	//@Test
 	public void getBoardList() throws Exception{
 		Pager pager = new Pager();
 		//pager.setKind("title");

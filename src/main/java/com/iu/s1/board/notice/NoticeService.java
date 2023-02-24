@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
+import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.util.Pager;
@@ -15,7 +16,7 @@ import com.iu.s1.util.Pager;
 public class NoticeService implements BoardService{
 	
 	@Autowired
-	private BbsDAO noticeDAO;
+	private BoardDAO noticeDAO;
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
@@ -29,8 +30,8 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return noticeDAO.setBoardAdd(bbsDTO);
 	}
 
 	@Override
@@ -45,10 +46,13 @@ public class NoticeService implements BoardService{
 		return 0;
 	}
 
+	
+	
+
 	@Override
-	public BoardDTO getBoardDetail() throws Exception {
+	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getBoardDetail(boardDTO);
 	}
 	
 	
