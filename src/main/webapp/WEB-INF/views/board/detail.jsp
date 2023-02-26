@@ -16,7 +16,7 @@
 	 <h3>${dto.writer}</h3>
 	 <p>${dto.contents}</p>
 	 
-	 <c:forEach items="dto" var="img">
+	 <c:forEach items="${dto}" var="img">
 	 <img alt="" src="/resources/${boardName}/img/${img.noticeImgDTO.fileName}">
 	 </c:forEach>
 	

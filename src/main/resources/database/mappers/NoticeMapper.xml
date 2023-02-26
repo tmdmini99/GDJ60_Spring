@@ -70,7 +70,7 @@
   	<result column="REGDATE" property="regDate"/>
   	<result column="HIT" property="hit"/>
   	
-  	<!-- <collection column="NUM" property="noticeImgDTO" select="getBoardDetail" ofType="Long" javaType="java.util.List">
+  	<!-- <collection property="noticeImgDTO" ofType="noticeImgDTO">
   		<id column="FILENUM" property="fileNum"/>
   		<result column="FILENAME" property="fileName"/>
   		<result column="ORINAME" property="oriName"/>
