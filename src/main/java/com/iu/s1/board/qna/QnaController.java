@@ -2,6 +2,8 @@ package com.iu.s1.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,9 +49,9 @@ public class QnaController {
 		
 	}
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO,MultipartFile [] files) throws Exception{
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO,MultipartFile [] files,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setBoardAdd(qnaDTO,files);
+		int result = qnaService.setBoardAdd(qnaDTO,files,session);
 		
 		String name ="등록 실패";
 		
@@ -91,6 +93,22 @@ public class QnaController {
 			name = "글이 등록되었습니다";
 		}
 		mv.addObject("url","./detail?num="+qnaDTO.getNum());
+		mv.addObject("result", name);
+		mv.setViewName("common/result");
+		return mv;
+	}
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = qnaService.setBoardDelete(bbsDTO,session);
+		String name ="삭제 실패";
+		
+		if(result>0) {
+			name = "글이 삭제되었습니다";
+		}
+		
+		mv.addObject("url","./list");
 		mv.addObject("result", name);
 		mv.setViewName("common/result");
 		return mv;

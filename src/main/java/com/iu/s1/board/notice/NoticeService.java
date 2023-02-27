@@ -3,6 +3,7 @@ package com.iu.s1.board.notice;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.util.FileManager;
 import com.iu.s1.util.Pager;
@@ -22,8 +24,9 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+	
 	@Autowired
-	private ServletContext servletContext;
+	private FileManager fileManager;
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
@@ -36,19 +39,19 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile [] files) throws Exception {
-		String realPath = servletContext.getRealPath("/resources/notice/imgs");
+	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile [] files,HttpSession session) throws Exception {
+		String realPath = session.getServletContext().getRealPath("/resources/upload/notice");
 		int a=noticeDAO.setBoardAdd(bbsDTO);
-		FileManager fileManager = new FileManager();
+		
 		System.out.println(bbsDTO.getNum());
 		for(MultipartFile f : files) {
 			if(!f.isEmpty()) {
 				String name=fileManager.fileSave(f, realPath);
-				NoticeImgDTO noticeImgDTO= new NoticeImgDTO();
+				BoardFileDTO noticeImgDTO= new BoardFileDTO();
 				noticeImgDTO.setFileName(name);
 				noticeImgDTO.setNum(bbsDTO.getNum());
 				noticeImgDTO.setOriName(f.getOriginalFilename());
-				a=noticeDAO.setBoardImgAdd(noticeImgDTO);
+				a=noticeDAO.setBoardFileAdd(noticeImgDTO);
 				
 			}
 			
@@ -66,9 +69,18 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int setBoardDelete(BbsDTO bbsDTO,HttpSession session) throws Exception {
+		List<BoardFileDTO> ar = noticeDAO.getBoardFileList(bbsDTO);
+		int a = noticeDAO.setBoardDelete(bbsDTO);
+		if(a >0) {
+			String realPath=session.getServletContext().getRealPath("resources/upload/notice");
+			
+			for(BoardFileDTO boardFileDTO : ar) {
+				fileManager.fileDelete(realPath, boardFileDTO.getFileName());
+		}}
+		
+		
+		return a;
 	}
 
 	

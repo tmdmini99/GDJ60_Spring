@@ -1,21 +1,27 @@
 package com.iu.s1.board.notice;
 
 
+import java.util.List;
+
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 
 public class NoticeDTO extends BoardDTO{
-	private NoticeImgDTO [] noticeImgDTO;
-
 	
-	public NoticeImgDTO[] getNoticeImgDTO() {
-		return noticeImgDTO;
-	}
-
-	public void setNoticeImgDTO(NoticeImgDTO[] noticeImgDTO) {
-		this.noticeImgDTO = noticeImgDTO;
-	}
-
+private List<BoardFileDTO> boardFileDTOs;
 	
+	
+	
+	
+	
+	
+	
+	public List<BoardFileDTO> getBoardFileDTOs() {
+		return boardFileDTOs;
+	}
+	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
+		this.boardFileDTOs = boardFileDTOs;
+	}
 	
 	
 }

@@ -46,9 +46,32 @@
   INSERT INTO QNA VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0,#{num},0,0)
   </insert>
   
-  <select id="getBoardDetail" parameterType="BoardDTO" resultType="QnaDTO">
-  SELECT * FROM QNA WHERE NUM=#{num}
+  <select id="getBoardDetail" parameterType="BoardDTO" resultMap="getBoardDetailResult">
+  SELECT * FROM QNA Q LEFT JOIN QNAFILES QF ON(Q.NUM = QF.NUM)
+		WHERE Q.NUM = #{num}
   </select>
+  
+  <resultMap type="QnaDTO" id="getBoardDetailResult">
+  <id column="NUM" property="num"/>
+  <result column="TITLE" property="title"/>
+  <result column="WRITER" property="writer"/>
+  <result column="CONTENTS" property="contents"/>
+  <result column="REGDATE" property="regDate"/>
+  <result column="HIT" property="hit"/>
+  <result column="DEPTH" property="depth"/>
+  
+  <!-- ofType은 반환할 타입의 제네릭 타입  javaType은  DTO에 반환할 타입 -->
+  <collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  		<id column="FILENUM" property="fileNum"/>
+  		<result column="FILENAME" property="fileName"/>
+  		<result column="ORINAME" property="oriName"/>
+  		
+  
+  </collection>
+  
+  
+  
+  </resultMap>
   
   <update id="setStepUpdate" parameterType="QnaDTO">
   	UPDATE QNA SET STEP=STEP+1
@@ -59,7 +82,15 @@
   	INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0,#{ref},#{step},#{depth})
   </insert>
   
-  <insert id="setBoardImgAdd" parameterType="QnaImgDTO">
-  		INSERT INTO QNAFILES VALUES(Qna_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
+  <insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+  		INSERT INTO QNAFILES VALUES(QNA_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
   	</insert>
+  	
+  	<delete id="setBoardDelete" parameterType="BbsDTO">
+  		DELETE QNA WHERE NUM=#{num}
+  	</delete>
+  	
+  	<select id="getBoardFileList" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+  		SELECT * FROM QNAFILES WHERE NUM=#{num}
+  	</select>
   </mapper>

@@ -1,8 +1,10 @@
 package com.iu.s1.board.qna;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BbsService;
 import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.util.FileManager;
 import com.iu.s1.util.Pager;
@@ -25,7 +28,8 @@ public class QnaService implements BoardService{
 	private QnaDAO qnaDAO;
 	
 	@Autowired
-	private ServletContext servletContext;
+	private FileManager fileManager;
+	
 	
 	
 	@Override
@@ -46,10 +50,13 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile [] files) throws Exception {
-		// TODO Auto-generated method stub
-		String realPath = servletContext.getRealPath("/resources/qna/imgs");
-		FileManager fileManager = new FileManager();
+	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile [] files,HttpSession session) throws Exception {
+		// file HDD에 저장
+
+		
+		//DB INSERT
+		String realPath = session.getServletContext().getRealPath("/resources/upload/qna/");
+		
 		int a=qnaDAO.setBoardAdd(bbsDTO);
 		System.out.println(bbsDTO.getNum());
 		for(MultipartFile f : files) {
@@ -61,7 +68,7 @@ public class QnaService implements BoardService{
 			qnaImgDTO.setFileName(name);
 			qnaImgDTO.setNum(bbsDTO.getNum());
 			qnaImgDTO.setOriName(f.getOriginalFilename());
-			a = qnaDAO.setBoardImgAdd(qnaImgDTO);
+			a = qnaDAO.setBoardFileAdd(qnaImgDTO);
 			
 		}
 		return a;
@@ -74,8 +81,19 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
+	public int setBoardDelete(BbsDTO bbsDTO,HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
+		List<BoardFileDTO> ar = qnaDAO.getBoardFileList(bbsDTO);
+		int result=qnaDAO.setBoardDelete(bbsDTO);
+		
+		if(result>0) {
+			String realPath=session.getServletContext().getRealPath("resources/upload/qna");
+			
+			for(BoardFileDTO boardFileDTO : ar) {
+			fileManager.fileDelete(realPath, boardFileDTO.getFileName());
+			}
+			
+		}
 		return 0;
 	}
 	//reply

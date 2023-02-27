@@ -1,9 +1,14 @@
 package com.iu.s1.board;
 
+import java.util.List;
+
 //중간 단계 부모
 public class BoardDTO extends BbsDTO{
 	private String title;
 	private Long hit;
+	
+	
+	
 	
 	
 	public String getTitle() {
