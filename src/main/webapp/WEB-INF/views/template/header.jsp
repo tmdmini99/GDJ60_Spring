@@ -12,7 +12,7 @@
 					<li class="nav-item"><a class="nav-link active" href="/notice/list?page">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/product/list?page">제품</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/bankBook/list?page">저축상품</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/qna/list?page">기타메뉴</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/qna/list?page">QNA</a></li>
 			</ul>
 			<ul class="navbar-nav ">
 					<c:choose>
