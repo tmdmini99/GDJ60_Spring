@@ -20,6 +20,8 @@
 	PHONE: ${memberPage.phone} <br>
 	EMAIL: ${memberPage.email} <br>
 	
+	멤버 권한 : ${memberPage.roleDTO.roleName}
+	
 	
 	<a href="./memberUpdate" class="btn btn-info">정보 수정</a>
 	</div>

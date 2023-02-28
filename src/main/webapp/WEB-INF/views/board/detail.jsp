@@ -30,6 +30,7 @@
 	</c:if>
 	
 	
+	<c:if test="${member.id eq dto.writer}">
 	<div>
 		<form action="./update" id="frm">
 			<input type="hidden" name="num" value="${dto.num}">
@@ -39,6 +40,7 @@
 	
 		</form>
 	</div>
+	</c:if>
 	
 	</div>
 </div>

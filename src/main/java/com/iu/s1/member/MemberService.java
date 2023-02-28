@@ -24,6 +24,7 @@ public class MemberService {
 		//pw check
 		if(result !=null && memberDTO.getPw().equals(result.getPw())) {
 			memberDTO.setPw(null);
+			memberDTO.setRoleDTO(result.getRoleDTO());
 			return memberDTO;
 		}else {
 			return null;

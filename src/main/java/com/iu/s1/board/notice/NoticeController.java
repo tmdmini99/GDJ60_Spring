@@ -42,7 +42,10 @@ public class NoticeController {
 	}
 	@GetMapping("add")
 	public ModelAndView setBoardAdd() throws Exception{
+		
 		ModelAndView mv = new ModelAndView();
+		
+		
 		mv.setViewName("board/add");
 		return mv;
 	}

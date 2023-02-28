@@ -43,7 +43,16 @@
 							</c:catch>
 								<a href="./detail?num=${dto.num}">${dto.title}</a>
 						</td>
-						<td>${dto.writer}</td>
+						<td>
+							<c:choose>
+								<c:when test="${boardName eq 'notice'}">
+									관리자
+								</c:when>
+								<c:otherwise>
+									${dto.writer}
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>${dto.regDate}</td>
 						<td>${dto.hit}</td>
 					</tr>
@@ -104,10 +113,20 @@
 					<button type="submit" class="btn btn-primary mb-3">검색</button>
 				</div>
 			</form>
+			<c:if test="${not empty member}">
 			
-			<div>
-			<a href="./add">등록</a>
-			</div>
+			<c:if test="${boardName eq 'notice' and member.roleDTO.roleName eq 'ADMIN'}">
+				<div class="row">				
+					<a href="./add">등록</a>
+				</div>
+			</c:if>
+			
+			<c:if test="${boardName ne 'notice'}">
+				<div class="row">
+					<a href="./add">등록</a>
+				</div>
+			</c:if>
+			</c:if>
 		
 	</div>
 </div>

@@ -12,7 +12,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 
 
-
+	<c:if test="${not empty member}">
 	<div class="container-fluid">
 		
 			<div class="row mt-4 my-5">
@@ -22,7 +22,7 @@
 			<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 				<div class="mb-3">
 					<label for="writer" class="form-label">작성자</label> 
-					<input class="form-control" id="writer" type="text" name="writer">
+					<input class="form-control" id="writer" type="text" name="writer" value="${member.id}" readonly>
 				</div>
 				<div class="mb-3">
 					<label for="title" class="form-label">제목</label> 
@@ -52,6 +52,7 @@
 			</div>
 		
 	</div>
+	</c:if>
 	<script src="../resources/js/fileManager.js"></script>
 	<script>
 		setMax(5);

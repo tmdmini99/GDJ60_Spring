@@ -16,9 +16,30 @@
  
  
  
-  <select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-  	SELECT * FROM MEMBER WHERE ID=#{id}
+  <select id="getMemberLogin" parameterType="MemberDTO" resultMap="memberRole">
+  	SELECT * FROM MEMBER 
+  				INNER JOIN
+  				MEMBER_ROLE
+  				USING(ID)
+  				INNER JOIN
+  				ROLE
+  				USING(ROLENUM) 
+  	
+  	WHERE ID=#{id}
   </select>
+  <resultMap type="MemberDTO" id="memberRole">
+  <id column="id" property="id"/>
+  <result column="pw" property="pw"/>
+  <result column="name" property="name"/>
+  <result column="address" property="address"/>
+  <result column="phone" property="phone"/>
+  <result column="email" property="email"/>
+  
+  <association property="roleDTO" javaType="RoleDTO">
+  <id column="rolenum" property="roleNum"/>
+  <result column="rolename" property="roleName"/>
+  </association>
+  </resultMap>
   
   <update id="setMemberUpdate" parameterType="MemberDTO">
   	UPDATE MEMBER SET NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email} 
