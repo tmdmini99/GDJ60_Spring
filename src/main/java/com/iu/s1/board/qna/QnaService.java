@@ -118,6 +118,12 @@ public class QnaService implements BoardService{
 		result=qnaDAO.setReplyAdd(qnaDTO);
 		return result;
 	}
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.getBoardFileDetail(boardFileDTO);
+	}
 
 	
 }

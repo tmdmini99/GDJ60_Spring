@@ -93,4 +93,8 @@
   	<select id="getBoardFileList" parameterType="BoardFileDTO" resultType="BoardFileDTO">
   		SELECT * FROM QNAFILES WHERE NUM=#{num}
   	</select>
+  	
+  	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+  		SELECT * FROM QNAFILES	WHERE FILENUM=#{fileNum}
+  	</select>
   </mapper>

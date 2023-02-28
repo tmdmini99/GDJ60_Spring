@@ -89,4 +89,7 @@
   	<delete id="setBoardDelete" parameterType="BbsDTO">
   		DELETE NOTICE WHERE NUM=#{num}
   	</delete>
+  	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+  		SELECT * FROM NOTICEFILES	WHERE FILENUM=#{fileNum}
+  	</select>
   </mapper>

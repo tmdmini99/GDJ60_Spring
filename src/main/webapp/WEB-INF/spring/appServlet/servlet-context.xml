@@ -20,10 +20,19 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
+		<!-- view의 이름과 같은 객체가 있는지 찾아봄 우선적으로 실행 -->
+		<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+			<beans:property name="order" value="0"></beans:property>
+			
+		</beans:bean>		
+	
 	
 	<context:component-scan base-package="com.iu.s1" />
 	
 	
 	
 </beans:beans>
+
+	

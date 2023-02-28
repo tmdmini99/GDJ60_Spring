@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.util.Pager;
 
@@ -111,6 +112,15 @@ public class QnaController {
 		mv.addObject("url","./list");
 		mv.addObject("result", name);
 		mv.setViewName("common/result");
+		return mv;
+	}
+	@GetMapping("fileDown")
+	public ModelAndView getFileDown(BoardFileDTO boardFileDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardFileDTO=qnaService.getBoardFileDetail(boardFileDTO);
+		System.out.println("여기는 Con");
+		mv.addObject("boardFile", boardFileDTO);
+		mv.setViewName("fileDownView");
 		return mv;
 	}
 	

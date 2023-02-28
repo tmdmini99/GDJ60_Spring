@@ -18,7 +18,7 @@
 	 
 	 <c:forEach items="${dto.boardFileDTOs}" var="files">
 	 
-	 <a href="./fileDown?fileNum=${files.fileNum}/${files.fileName}">${files.oriName}</a>
+	 <a href="./fileDown?fileNum=${files.fileNum}">${files.oriName}</a>
 	 
 	 
 	 </c:forEach>
