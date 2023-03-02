@@ -94,7 +94,7 @@ public class QnaService implements BoardService{
 			}
 			
 		}
-		return 0;
+		return result;
 	}
 	//reply
 	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{

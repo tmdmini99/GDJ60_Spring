@@ -46,7 +46,7 @@
 						<td>
 							<c:choose>
 								<c:when test="${boardName eq 'notice'}">
-									관리자
+										관리자
 								</c:when>
 								<c:otherwise>
 									${dto.writer}

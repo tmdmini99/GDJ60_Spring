@@ -27,14 +27,37 @@
 			<beans:property name="order" value="0"></beans:property>
 			
 		</beans:bean>	
-		
+		<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
 		<interceptors>
 			<interceptor>
 				<mapping path="/qna/*"/>
+				<mapping path="/member/memberPage"/>
+				<mapping path="/member/memberUpdate"/>
+			
 				<!-- exclude-mapping은 이 URL은 제외하고 나머지를 실행 시키면 저기를 거쳐감 -->
 				<exclude-mapping path="/qna/list"/>
 				<beans:ref bean="memberCheckInterceptor"/>
 			</interceptor>
+			
+			<interceptor>
+				<mapping path="/notice/*"/>
+				<exclude-mapping path="/notice/list"/>
+				<exclude-mapping path="/notice/detail"/>
+				<!-- 이 안에서만 쓸경우 다른 곳에서 Annotation 사용 불가 -->
+				<!-- <beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor"></beans:bean> -->
+				<beans:ref bean="adminCheckInterceptor"/>
+			</interceptor>
+			
+			<interceptor>
+			<mapping path="/notice/update"/>
+			<mapping path="/notice/delete"/>
+			<mapping path="/qna/update"/>
+			<mapping path="/qna/delete"/>
+			<beans:ref bean="ownerCheckInterceptor"/>
+			</interceptor>
+			
+			
+			
 		</interceptors>	
 	
 	
