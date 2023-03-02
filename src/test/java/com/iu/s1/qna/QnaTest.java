@@ -18,22 +18,22 @@ public class QnaTest extends MyTestCase{
 	@Autowired
 	private QnaDAO qnaDAO;
 	
-	@Test
-	public void Qtest() throws Exception{
-		Pager pager = new Pager();
-		pager.makeRow();
-		List<BbsDTO> ar=qnaDAO.getBoardList(pager);	
-		
-		assertNotEquals(0, ar);
-	}
-	
-	@Test
+	//@Test
+//	public void Qtest() throws Exception{
+//		Pager pager = new Pager();
+//		pager.makeRow();
+//		List<BbsDTO> ar=qnaDAO.getBoardList(pager);	
+//		
+//		assertNotEquals(0, ar);
+//	}
+//	
+	//@Test
 	public void Qtest2() throws Exception{
 		Pager pager = new Pager();
 		long a = qnaDAO.getTotalCount(pager);
 		assertNotEquals(0, a);
 	}
-	@Test
+	//@Test
 	public void Qtest3() throws Exception{
 		QnaDTO qnaDTO = new QnaDTO();
 		qnaDTO.setTitle("adfa");

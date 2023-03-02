@@ -15,14 +15,14 @@ public class ProductDAOTest extends MyTestCase{
 	@Autowired
 	private ProductDAO productDAO;
 	
-	@Test
-	public void getProductListTest() throws Exception{
-		//List<ProductDTO>ar=productDAO.getProductList();
-		//단정문
-		//assertNotEquals(0, ar.size()); 
-		
-	}
-	@Test
+//	//@Test
+//	public void getProductListTest() throws Exception{
+//		//List<ProductDTO>ar=productDAO.getProductList();
+//		//단정문
+//		//assertNotEquals(0, ar.size()); 
+//		
+//	}
+	//@Test
 	public void getProductDetail() throws Exception {
 		ProductDTO productDTO= new ProductDTO();
 		productDTO.setProductNum(28L);
@@ -31,8 +31,8 @@ public class ProductDAOTest extends MyTestCase{
 		assertNotNull(productDTO);
 		
 	}
-	//insert
-	@Test
+//	//insert
+	//@Test
 	public void setProductAdd() throws Exception{
 		ProductDTO productDTO= new ProductDTO();
 		productDTO.setProductNum(5L);

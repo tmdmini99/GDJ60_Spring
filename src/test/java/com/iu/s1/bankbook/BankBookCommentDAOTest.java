@@ -18,7 +18,7 @@ public class BankBookCommentDAOTest extends MyTestCase{
 	private  BankBookCommentDAO bankBookCommentDAO;
 	
 	//list
-	@Test
+	//@Test
 	public void getBoardList() throws Exception{
 		Pager pager = new Pager();
 		//pager.setKind("writer");

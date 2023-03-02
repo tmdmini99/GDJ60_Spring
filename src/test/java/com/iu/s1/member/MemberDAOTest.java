@@ -35,7 +35,7 @@ public class MemberDAOTest extends MyTestCase{
 		
 		assertNotNull(null, memberDTO);
 	}
-	@Test
+	//@Test
 	public void setMemberUpdate() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("dd");

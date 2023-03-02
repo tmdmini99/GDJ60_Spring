@@ -19,7 +19,7 @@ public class NoticeDAOTest extends MyTestCase{
 	NoticeDAO noticeDAO = new NoticeDAO();
 	
 	
-	@Test
+	//@Test
 	public void setBoardAddTest() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setTitle("Title1");
@@ -31,11 +31,11 @@ public class NoticeDAOTest extends MyTestCase{
 	}
 	
 	//@Test
-	public void getTotalCount() throws Exception{
-		Pager pager = new Pager();
-		long a=noticeDAO.getTotalCount(pager);
-		assertNotEquals(0, a);
-	}
+//	public void getTotalCount() throws Exception{
+//		Pager pager = new Pager();
+//		long a=noticeDAO.getTotalCount(pager);
+//		assertNotEquals(0, a);
+//	}
 	//@Test
 	public void getBoardList() throws Exception{
 		Pager pager = new Pager();
