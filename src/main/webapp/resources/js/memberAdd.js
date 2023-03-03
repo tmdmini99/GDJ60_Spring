@@ -36,9 +36,43 @@ let checks = [false,false,false,false,false,false,false];
 
 id.addEventListener('blur',function(){
     //id.value=='' 와 id.value.length==0이 같음
-        console.log();
+    //중복 검사
+    let xhttp = new XMLHttpRequest();
+
+    // url, method
+    xhttp.open("POST",'./memberIdCheck');
+
+    //header
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //요청 발생 POST일 경우 parameter 전송
+
+    xhttp.send("id="+id.value);
+
+    //응답 처리
+    xhttp.addEventListener("readystatechange",function(){
+        if(this.readyState==4 && this.status==200){
+            if(this.responseText.trim()=='true'){
+               idResult.innerHTML="사용가능한 ID";
+               checks[0] = true;
+               idResult.classList.add('blueResult'); 
+               idResult.classList.remove('redResult');
+            }else{
+                idResult.innerHTML="중복된 ID";
+                checks[0] = false;
+                idResult.classList.add('redResult');
+                idResult.classList.remove('blueResult');
+                
+            }
+        }
+        // if(this.readyState==4 && this.status!=200){
+
+        // }
+    });
+
+
     if(id.value==''){
-        console.log('아무것도 없음');
+        
         idResult.innerText='아이디는 필수입력사항입니다';
         
         idResult.classList.add('redResult');
@@ -56,7 +90,7 @@ id.addEventListener('blur',function(){
 });
 pw.addEventListener('blur',function(){
     console.log(pw.value.length);
-    console.log("블러");
+    
     if(pw.value.length<5 || pw.value.length>11){
         pwResult.innerText='PW는 필수입니다';
         checks[1] = false;

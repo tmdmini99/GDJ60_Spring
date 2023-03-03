@@ -12,6 +12,17 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	
+	public boolean getMemberIdCheck(MemberDTO memberDTO) throws Exception{
+		memberDTO=memberDAO.getMemberLogin(memberDTO);
+		
+		boolean check = true; // 중복이 아니면 true 중복이면 false
+		if(memberDTO != null) {
+			check =false;
+		}
+		
+		return check;
+	}
+	
 	public int setMemberAdd(MemberDTO memberDTO) throws Exception{
 		int result=memberDAO.setMemberAdd(memberDTO);
 		result=memberDAO.setMemberRoleAdd(memberDTO);

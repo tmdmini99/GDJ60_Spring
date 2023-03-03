@@ -32,5 +32,26 @@
 	
 	</c:choose>
 	<a href="./list">목록으로</a>
+
+	<div id="comment">
+
+
+	</div>
+
+	<div id="di">
+	
+	  <div class="mb-3">	
+		<!-- <input type="hidden" value="${detail.bookNumber}" id="inp1">
+		<input type="hidden" value="${member.id}" id="inp2"> -->
+		<textarea class="form-control " id="inp3" rows="3"></textarea>
+	  </div>
+	  <div class="mb-3">
+		<button type="button" class="btn btn-primary" id="btn" data-book-bookNumber="${detail.bookNumber}">댓글등록</button>
+
+
+	  </div>
+	  
+	</div>
+<script src="/resources/js/bankBookReply.js"></script>
 </body>
 </html>

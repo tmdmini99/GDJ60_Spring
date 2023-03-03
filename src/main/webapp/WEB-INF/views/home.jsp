@@ -37,10 +37,12 @@
   </div>
 	</div>
 </div>
-	<h1>${member.name}</h1>
-<div>
 
+<div class="container-fluid my-5" id="noticeList">
+	
+	
 </div>
+<script src="/resources/js/noticeTop5.js"></script>
 <c:import url="./template/common_js.jsp"></c:import>
 </body>
 </html>

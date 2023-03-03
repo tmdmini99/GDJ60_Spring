@@ -28,13 +28,14 @@
 			
 		</beans:bean>	
 		<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
-		<interceptors>
+		
+		<!-- <interceptors>
 			<interceptor>
 				<mapping path="/qna/*"/>
 				<mapping path="/member/memberPage"/>
 				<mapping path="/member/memberUpdate"/>
 			
-				<!-- exclude-mapping은 이 URL은 제외하고 나머지를 실행 시키면 저기를 거쳐감 -->
+				exclude-mapping은 이 URL은 제외하고 나머지를 실행 시키면 저기를 거쳐감
 				<exclude-mapping path="/qna/list"/>
 				<beans:ref bean="memberCheckInterceptor"/>
 			</interceptor>
@@ -43,8 +44,9 @@
 				<mapping path="/notice/*"/>
 				<exclude-mapping path="/notice/list"/>
 				<exclude-mapping path="/notice/detail"/>
-				<!-- 이 안에서만 쓸경우 다른 곳에서 Annotation 사용 불가 -->
-				<!-- <beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor"></beans:bean> -->
+				<exclude-mapping path="/notice/listTop"/>
+				이 안에서만 쓸경우 다른 곳에서 Annotation 사용 불가
+				<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor"></beans:bean>
 				<beans:ref bean="adminCheckInterceptor"/>
 			</interceptor>
 			
@@ -58,7 +60,7 @@
 			
 			
 			
-		</interceptors>	
+		</interceptors>	 -->
 	
 	
 	<context:component-scan base-package="com.iu.s1" />
