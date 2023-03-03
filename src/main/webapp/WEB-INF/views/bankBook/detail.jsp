@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<h1>BankBook Detail page</h1>
 	
 	<c:choose >
@@ -18,6 +20,7 @@
 			<h2>Rate :${detail.bookRate}</h2>
 			<h2>Sale :${detail.bookSale}</h2>
 			<h2>Detail :${detail.bookDetail}</h2>
+			startNum : ${pager.startRow}
 			<div>
 				<!-- bankBookDTO에 있는 멤버 변수 bankBOokImgDTO안에 있는 fileName을 꺼내옴 -->
 				<c:if test="${not empty detail.bankBookImgDTO }">
@@ -31,12 +34,17 @@
 		<c:otherwise>해당 상품이 없습니다</c:otherwise>
 	
 	</c:choose>
+	
+	
+	
+	
 	<a href="./list">목록으로</a>
 
 	<div id="comment">
 
 
 	</div>
+	
 
 	<div id="di">
 	
@@ -53,5 +61,9 @@
 	  
 	</div>
 <script src="/resources/js/bankBookReply.js"></script>
+<script src="/resources/js/bookBankCommentPaging.js"></script>
+
+
+<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

@@ -22,8 +22,8 @@ public class BankBookCommentService implements BbsService{
 	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		pager.makeRow();
 		pager.makeNum(bankBookCommentDAO.getTotalCount(pager));
+		pager.makeRow();
 		
 		return bankBookCommentDAO.getBoardList(pager);
 	}

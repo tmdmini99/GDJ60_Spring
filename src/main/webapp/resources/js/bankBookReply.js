@@ -9,6 +9,8 @@ const comment = document.getElementById("comment");
 
 
 
+
+
 btn.addEventListener("click",function(){
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST","../bankBookComment/add");
@@ -22,7 +24,7 @@ btn.addEventListener("click",function(){
         if(this.readyState==4 && this.status==200){
             //di.innerText=this.responseText.trim();
             if(this.responseText.trim() !=null){
-                alert("댓글이 등록되었습니다");
+                //alert("댓글이 등록되었습니다");
                 inp3.value="";
                 getList();
                 //comment.innerHTML=getList().responseText.trim();
@@ -48,3 +50,4 @@ function getList(){
         }
     });
 }
+
