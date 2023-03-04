@@ -61,7 +61,7 @@
 	  
 	</div>
 <script src="/resources/js/bankBookReply.js"></script>
-<script src="/resources/js/bookBankCommentPaging.js"></script>
+
 
 
 <c:import url="../template/common_js.jsp"></c:import>
