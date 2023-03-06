@@ -40,7 +40,7 @@
 	
 	<a href="./list">목록으로</a>
 
-	<div id="comment">
+	<div class="my-5" id="comment">
 
 
 	</div>
