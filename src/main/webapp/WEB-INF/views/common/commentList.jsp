@@ -21,7 +21,7 @@
 			<tbody>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td id="contents${dto.num}"><textarea readonly>${dto.contents}</textarea></td>
+					<td id="contents${dto.num}">${dto.contents}</td>
 					<td>${dto.writer}</td>
 					<td>${dto.regDate}</td>
 					<td>
@@ -33,7 +33,7 @@
 					</td>
 					<td>
 						<c:if test="${dto.writer eq member.id}">
-							<button class="btn btn-info up" data-update="${dto.num}" data-contents="${dto.contents}">
+							<button class="btn btn-info up" data-update="${dto.num}" data-contents="${dto.contents}" data-bs-toggle="modal" data-bs-target="#contentsModal">
 								UPDATE
 							</button>
 						</c:if>
