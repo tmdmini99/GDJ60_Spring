@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -64,9 +65,10 @@
 		
 	</div>
 	<script src="../resources/js/fileManager.js"></script>
+	<c:import url="../template/common_js.jsp"></c:import>
 	<script>
 		setMax(3);
+		
 	</script>
-	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

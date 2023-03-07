@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -86,12 +88,20 @@
 		</div>
 		</div>
 	</div>
-
+<!-- Test 후 삭제할 영역 -->
+<div class="my-5">
+	<button type="button" id="b1">BUTTON</button>
+	<input type="text" id="t1">
+	<div class="my-5">
+		
+		<input type="checkbox" class="ch" name="ch" id="" value="v1">
+		<input type="checkbox" class="ch" name="ch" id="" value="v2">
+		<input type="checkbox" class="ch" name="ch" id="" value="v3">
+		<input type="checkbox" class="ch" name="ch" id="" value="v4">
+	</div>
+</div>
 
 <script src="/resources/js/bankBookReply.js"></script>
-
-
-
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
