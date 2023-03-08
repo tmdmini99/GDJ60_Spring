@@ -42,8 +42,8 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
@@ -78,6 +78,11 @@ public class QnaDAO implements BoardDAO {
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
+	}
+	@Override
+	public int setBoardFileDelete(Long fileNum) throws Exception {
+		
+		return sqlSession.delete(NAMESPACE+"setBoardFileDelete", fileNum);
 	}
 
 }

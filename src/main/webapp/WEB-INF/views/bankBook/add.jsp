@@ -68,6 +68,7 @@
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script>
 		setMax(3);
+		setParam("addfiles");
 		
 	</script>
 </body>

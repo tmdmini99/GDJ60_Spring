@@ -28,6 +28,14 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 
+	
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, HttpSession session, MultipartFile[] multipartFiles, Long[] fileNums)
+			throws Exception {
+		
+		return 0;
+	}
+	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		

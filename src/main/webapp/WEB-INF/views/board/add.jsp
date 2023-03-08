@@ -59,7 +59,7 @@
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script>
 		setMax(5);
-		setName('files');
+		setName('addfiles');
 		$("#contents").summernote();
 	</script>
 </body>
