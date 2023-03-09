@@ -157,6 +157,9 @@ public class QnaService implements BoardService{
 		// TODO Auto-generated method stub
 		return qnaDAO.getBoardFileDetail(boardFileDTO);
 	}
+	public int setboardFileDelete(Long fileNum) throws Exception{
+		return qnaDAO.setBoardFileDelete(fileNum);
+	}
 
 	
 }

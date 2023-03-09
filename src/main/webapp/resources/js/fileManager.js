@@ -47,29 +47,113 @@ $("#fileList").on("click",".del",function(){
     // });
 
 
-$(".deleteCheck").click(function(){
-    if($(this).prop("checked")){
-        let result = confirm("파일이 영구 삭제됩니다");
-        if(result){
 
-            clickCount--;
-        }else{
-            $(this).prop("checked",false);
-        }
-    }else{
-        
-        if(clickCount==5){
-            console.log(idx);
+    $(".deleteCheck").click(function(){
+        if($(this).prop("checked")){
+            let result = confirm("파일이 영구 삭제됩니다");
+            let ch = $(this);
+            if(result){
+                //아직 ajax안에 들어가지 않았기때문에 $(".deleteCheck")객체 자기 자신
+                let fileNum = $(this).val();
+                //ajax 안에 있는 $(this)는 ajax 객체 자기 자신
+                $.ajax({
+                    type:'POST',
+                    url:'./boardFileDelete',
+                    data:{
+                        fileNum: fileNum
+                    },
+                    success:function(response){
+                        if(response.trim()>0){
+                            alert("삭제 완료");
+                            //this : ajax 객체 자기자신
+                            ch.parent().parent().remove();
+                            console.log(ch);
+                            clickCount--;
+                        }else{
+                            alert("삭제 실패<br> 관리자 문의 필요!");
+                        }
+                    },
+                    error:function(){
+
+                    }
+
+                })
+                //ajax DB 삭제
+            //    fetch("URL?p=1" ,{
+            //     method:'GET'
+            //    }).then((response)=>response.text()).then((res)=>{
+            //     res.trim()
+            //    })
             
-            idx--;
-            $("#del"+idx).remove();
-            return;
+            // $.get("URL?p=1",function(response){
+            //     //
+            //     response.trim();
+            // })
+
+            // fetch("URL",{
+            //     method:"POST",
+            //     headers :{
+            //         'Contents-Type':'X'
+            //     },
+            //     body:"p=1"
+            // }).then((response)=>response.text()).then((res)=>{
+            //         res.trim();
+            //     })
+
+            //parameter 안에 들어가는 값은 문자열 형식으로 쓸 필요가 없음 파라미터 값에 ''붙일 필요 x
+            //     $.post("URL",{p:1},function(res){})
+
+            // }else{
+            //     $(this).prop("checked",false);
+             }
         }
+        else{
+            
+            if(clickCount==5){
+                console.log(idx);
+                
+                idx--;
+                $("#del"+idx).remove();
+                return;
+            }
+           
+            clickCount++;
+        
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+// $(".deleteCheck").click(function(){
+//     if($(this).prop("checked")){
+//         let result = confirm("파일이 영구 삭제됩니다");
+//         if(result){
+
+//             clickCount--;
+//         }else{
+//             $(this).prop("checked",false);
+//         }
+//     }else{
+        
+//         if(clickCount==5){
+//             console.log(idx);
+            
+//             idx--;
+//             $("#del"+idx).remove();
+//             return;
+//         }
        
-        clickCount++;
+//         clickCount++;
     
-    }
-});
+//     }
+// });
 
 
 
