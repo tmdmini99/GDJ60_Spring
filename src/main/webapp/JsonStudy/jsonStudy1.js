@@ -1,9 +1,31 @@
+
 $("#btn").click(()=>{
     let productId =$("#productId").val();
-    $.get("https://dummyjson.com/products/"+productId,(response)=>{
-        console.log(response);
-        console.log(response.title);
+    
+    $.ajax({
+        type:"get",
+        url:"https://dummyjson.com/products/"+productId,
+        success:function(response){
+            console.log(response);
+            console.log(typeof response);
+            response=JSON.parse(response);
+            console.log(typeof response);
+        }
     });
+
+    // $.get("https://dummyjson.com/products/"+productId,(response)=>{
+    //     console.log(response);
+    //     console.log(response.title);
+    //     console.log(typeof response);
+    //     alert(response);
+    //      String으로 바꿔주는 메서드
+    //     let result = JSON.stringify(response);
+    //     console.log(result);
+    //     alert(result);
+    //     console.log(result.title);
+    //     console.log(typeof result);
+
+    // });
 })
 
 $.get("https://dummyjson.com/products/",(response)=>{

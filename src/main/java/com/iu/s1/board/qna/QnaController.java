@@ -1,17 +1,24 @@
 package com.iu.s1.board.qna;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,6 +46,41 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		List<BbsDTO> ar = qnaService.getBoardList(pager);
 		
+		
+//		//RestTemplate는 Spring boot에서는 사용하지 않을것을 권장
+//		RestTemplate restTemplate= new RestTemplate();
+//		
+//		//URL,Method,parameter,header
+//		
+//		
+//		
+//		//Header
+//		HttpHeaders headers = new HttpHeaders();
+//		
+//		
+//		//1.headers.add("header명","header값");
+//		headers.add("Content-Type","application/x-www-form-urlencoded");
+//		
+//		//2.headers.set헤더명("값");
+//		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//		
+//		//parameter(post)
+//		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+//		params.add("파라미터명", "파라미터 값");
+//		params.add("grant_type", "authorization_code");
+//		//${REST_API_KEY}는 직접 발급받은 아이디를 입력
+//		params.add("client_id", "${REST_API_KEY}");
+//		
+//		
+//		
+//		//header, params를 하나의 객체로 생성
+//		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String,String>>(params,headers);
+//		
+//		//String.class는 내가 내보낼 객체타입
+//		String result=restTemplate.getForObject("https://dummyjson.com/products/1",String.class,request);
+//		result=restTemplate.postForObject("https://dummyjson.com/products/1", request,String.class);
+//		System.out.println(result);
+//		
 		
 		mv.setViewName("./board/list");
 		mv.addObject("list", ar);
